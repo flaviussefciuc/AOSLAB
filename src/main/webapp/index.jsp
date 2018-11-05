@@ -6,7 +6,7 @@ public void saveInDB(String name, String mail) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/labdb", "flavius", "flavius");
-
+			//selfnote: Maybe use PreparedStatement instead to prevent SQL injection
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate(String.format("INSERT INTO person (name,email) VALUES ('%s','%s')",name, mail));
 			con.close();
